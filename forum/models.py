@@ -12,6 +12,8 @@ TOPICS = (
 )
 
 # Create your models here.
+
+# The model to create a new discussion thread
 class Thread(models.Model):
     thread_id = models.AutoField(primary_key=True)
     author = models.ForeignKey(
@@ -24,3 +26,14 @@ class Thread(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+
+# The model to comment in a discussion thread
+class Comment(models.Model):
+    comment_id = models.AutoField(primary_key=True)
+    thread = models.ForeignKey(
+        Thread, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="commenter")
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
