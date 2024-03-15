@@ -27,7 +27,16 @@
 }
 
 .topic-buttons {
-    padding-left: 15px;
+    width: 140px;
+}
+
+.topic-buttons:hover {
+    background-color: rgb(56, 56, 56) !important;
+}
+
+.custom-buttons {
+    width: 140px;
+    background-color: rgb(62, 62, 62);
 }
 
 /*----------------------------------------------------- Footer */

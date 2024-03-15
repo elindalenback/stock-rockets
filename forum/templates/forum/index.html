@@ -6,7 +6,12 @@
             <!-- Topics -->
             <div class="col s12 m3">
                 <div class="card-panel topic-collumn">
-                    <h5>Topics</h5>
+                    <ul>
+                        <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">All Topics</a></li>
+                        <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">Following</a></li>
+                    </ul>
+                    <hr>
+                    <h5>Topics:</h5>
                     <ul>
                         {% for topic_id, topic_name in topics %}
                         <li class="topics"><a class="waves-effect waves-light btn-small topic-buttons">{{ topic_name }}</a></li>
@@ -16,7 +21,18 @@
             </div>
             <!-- Search Function -->
             <div class="col s12 m9">
-                <h1>Search</h1>
+                <!-- Search bar -->
+                <div class="row">
+                    <div class="col s11 m11 l11">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">search</i>
+                                <input type="text" id="autocomplete-input" class="autocomplete">
+                                <label for="autocomplete-input">Search...</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- Threads -->
             <div class="col s12 m9">
