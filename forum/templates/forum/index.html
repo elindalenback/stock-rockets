@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- index.html content starts here -->
+    <h1>Threads list</h1>
+    {% for thread in thread_list %}
+    <h2>{{thread.title}}</h2>
+    <h3>{{thread.get_topic_display}}</h3>
+    <p>{{thread.thread_text}}</p>
+    <p>Posted by: {{thread.author}}</p>
+    {% endfor %}
+
+<!-- index.html content ends here -->
+{% endblock %}

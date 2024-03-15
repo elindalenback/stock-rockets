@@ -1,0 +1,70 @@
+{% load static %}
+{% url 'home' as home_url %}
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- MaterializeCSS stylesheet  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+
+    <title>Stock Rockets Forum</title>
+
+</head>
+
+<body class="d-flex flex-column h-100 main-bg">
+
+    <!-- Navigation -->
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+              <a href="{% url 'home' %}" class="brand-logo">Stock Rockets</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="{% if request.path == home_url %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="badges.html">Sign up</a></li>
+                <li><a href="collapsible.html">Log in</a></li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+
+    <main class="flex-shrink-0 main-bg">
+
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 dark-bg">
+        <p class="m-0 text-center text-white">Made by Code Instituters</p>
+        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+            <i class="fab fa-youtube-square ms-3"></i>
+        </p>
+    </footer>
+
+    <!-- Materialize CSS JavaScript library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
