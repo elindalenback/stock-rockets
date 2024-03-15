@@ -9,7 +9,7 @@
                     <h5>Topics</h5>
                     <ul>
                         {% for topic_id, topic_name in topics %}
-                        <li class="topics"><a class="waves-effect waves-light btn-small topic-button">{{ topic_name }}</a></li>
+                        <li class="topics"><a class="waves-effect waves-light btn-small topic-buttons">{{ topic_name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -26,11 +26,11 @@
                         <img src="static/images/anon-pp.png" alt="Thread Author">
                         by {{thread.author}}
                     </div>
-                    <a class="waves-effect waves-light btn-small">{{thread.get_topic_display}}</a>
+                    <a class="waves-effect waves-light btn-small topic-buttons">{{thread.get_topic_display}}</a>
                     <ul class="collection">
                             <li class="collection-item">
                                 <h5 class="heading">{{thread.title}}</h5>
-                                <p class="main-text">{{thread.thread_text}}</p>
+                                <p class="main-text">{{thread.thread_text |safe }}</p>
                             </li>
                         {% endfor %}
                     </ul>
