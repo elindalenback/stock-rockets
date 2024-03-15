@@ -22,18 +22,20 @@
             <div class="col s12 m9">
                 <div class="card-panel">
                     {% for thread in thread_list %}
-                    <div class="chip">
-                        <img src="static/images/anon-pp.png" alt="Thread Author">
-                        by {{thread.author}}
+                    <div>
+                        <div class="chip">
+                            <img src="static/images/anon-pp.png" alt="Thread Author">
+                            by {{thread.author}}
+                        </div>
+                        <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
                     </div>
-                    <a class="waves-effect waves-light btn-small topic-buttons">{{thread.get_topic_display}}</a>
                     <ul class="collection">
                             <li class="collection-item">
                                 <h5 class="heading">{{thread.title}}</h5>
                                 <p class="main-text">{{thread.thread_text |safe }}</p>
                             </li>
-                        {% endfor %}
                     </ul>
+                    {% endfor %}
                 </div>
             </div>
         </div>
