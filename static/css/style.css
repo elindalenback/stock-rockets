@@ -23,6 +23,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: rgb(70, 70, 70);
 }
 
 /* Takes up empty space to always push footer down 2. */
@@ -57,10 +58,6 @@ a {
     color: black;
 }
 
-#max-height {
-    max-height: 200px;
-}
-
 /*------------------------------------------ Thread Page */
 .thread-info {
     display: flex;
@@ -70,6 +67,10 @@ a {
 .thread-info .chip {
     display: flex;
     align-items: center; /* Align items vertically */
+}
+
+.thread-info a {
+    margin-left: auto; /* Move the tag/button to the right */
 }
 
 /*----------------------------------------------------- Footer */

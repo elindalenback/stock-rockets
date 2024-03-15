@@ -2,60 +2,60 @@
 {% load static %}
 
 {% block content %}
-    <!-- index.html content starts here -->
+<!-- index.html content starts here -->
+<div class="row">
+    <!-- Topics -->
+    <div class="col s12 m3">
+        <div class="card-panel topic-collumn">
+            <ul>
+                <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">All Topics</a></li>
+                <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">Following</a></li>
+            </ul>
+            <hr>
+            <h5>Topics:</h5>
+            <ul>
+                {% for topic_id, topic_name in topics %}
+                <li class="topics"><a class="waves-effect waves-light btn-small topic-buttons">{{ topic_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- Search Function -->
+    <div class="col s12 m9">
+        <!-- Search bar -->
         <div class="row">
-            <!-- Topics -->
-            <div class="col s12 m3">
-                <div class="card-panel topic-collumn">
-                    <ul>
-                        <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">All Topics</a></li>
-                        <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">Following</a></li>
-                    </ul>
-                    <hr>
-                    <h5>Topics:</h5>
-                    <ul>
-                        {% for topic_id, topic_name in topics %}
-                        <li class="topics"><a class="waves-effect waves-light btn-small topic-buttons">{{ topic_name }}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <!-- Search Function -->
-            <div class="col s12 m9">
-                <!-- Search bar -->
+            <div class="col s11 m11 l11">
                 <div class="row">
-                    <div class="col s11 m11 l11">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">search</i>
-                                <input type="text" id="autocomplete-input" class="autocomplete">
-                                <label for="autocomplete-input">Search...</label>
-                            </div>
-                        </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                        <input type="text" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Search...</label>
                     </div>
-                </div>
-            </div>
-            <!-- Threads -->
-            <div class="col s12 m9">
-                <div class="card-panel">
-                    {% for thread in thread_list %}
-                    <div>
-                        <div class="chip">
-                            <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
-                            by {{thread.author}}
-                        </div>
-                        <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
-                    </div>
-                    <ul class="collection">
-                        <li class="collection-item">
-                            <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
-                                <h5 class="heading">{{thread.title}}</h5>
-                                <p class="main-text">{{thread.thread_text |safe }}</p>
-                            </a>
-                        </li>
-                    </ul>
-                    {% endfor %}
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Threads -->
+    <div class="col s12 m9">
+        <div class="card-panel">
+            {% for thread in thread_list %}
+            <div>
+                <div class="chip">
+                    <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
+                    by {{thread.author}}
+                </div>
+                <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
+            </div>
+            <ul class="collection">
+                <li class="collection-item">
+                    <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
+                        <h5 class="heading">{{thread.title}}</h5>
+                        <p class="main-text">{{ thread.thread_text | safe | truncatewords:150 }}</p>
+                    </a>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
