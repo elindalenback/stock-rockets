@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <h3 class="post-title">{{ thread.title }}</h3>
+                <div class="thread-info">
+                    <div class="chip">
+                        <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
+                        by {{thread.author}}
+                    </div>
+                    <p> | {{ thread.created_on }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ thread.thread_text | safe }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

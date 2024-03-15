@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
     <!-- index.html content starts here -->
@@ -40,16 +41,18 @@
                     {% for thread in thread_list %}
                     <div>
                         <div class="chip">
-                            <img src="static/images/anon-pp.png" alt="Thread Author">
+                            <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
                             by {{thread.author}}
                         </div>
                         <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
                     </div>
                     <ul class="collection">
-                            <li class="collection-item">
+                        <li class="collection-item">
+                            <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
                                 <h5 class="heading">{{thread.title}}</h5>
                                 <p class="main-text">{{thread.thread_text |safe }}</p>
-                            </li>
+                            </a>
+                        </li>
                     </ul>
                     {% endfor %}
                 </div>

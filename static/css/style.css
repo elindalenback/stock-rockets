@@ -5,7 +5,6 @@
 /* font-family: "Open Sans", sans-serif; */
 
 /*--------------------------------------------------- General */
-
 .heading {
     font-family: "Montserrat", sans-serif;
 }
@@ -18,6 +17,20 @@
     background-color: rgba(0, 0, 0, 0.616);
 }
 
+/*---------------------------------------------------- Main */
+/* Takes up empty space to always push footer down 1. */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Takes up empty space to always push footer down 2. */
+main {
+    flex: 1;
+}
+
+/*------------------------------------------ Topic Collumn */
 .topic-collumn {
     height: 800px;
 }
@@ -37,6 +50,26 @@
 .custom-buttons {
     width: 140px;
     background-color: rgb(62, 62, 62);
+}
+
+/*------------------------------------------ Thread Collumn */
+a {
+    color: black;
+}
+
+#max-height {
+    max-height: 200px;
+}
+
+/*------------------------------------------ Thread Page */
+.thread-info {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.thread-info .chip {
+    display: flex;
+    align-items: center; /* Align items vertically */
 }
 
 /*----------------------------------------------------- Footer */
