@@ -2,12 +2,39 @@
 
 {% block content %}
     <!-- index.html content starts here -->
-    <h1 class="heading">Threads list</h1>
-    {% for thread in thread_list %}
-        <h2 class="heading">{{thread.title}}</h2>
-        <h3 class="heading">{{thread.get_topic_display}}</h3>
-        <p class="main-text">{{thread.thread_text}}</p>
-        <p class="main-text">Posted by: {{thread.author}}</p>
-    {% endfor %}
-    <!-- index.html content ends here -->
+        <div class="row">
+            <!-- Topics -->
+            <div class="col s12 m3">
+                <div class="card-panel topic-collumn">
+                    <h5>Topics</h5>
+                    <ul>
+                        {% for topic_id, topic_name in topics %}
+                        <li class="topics"><a class="waves-effect waves-light btn-small topic-button">{{ topic_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <!-- Search Function -->
+            <div class="col s12 m9">
+                <h1>Search</h1>
+            </div>
+            <!-- Threads -->
+            <div class="col s12 m9">
+                <div class="card-panel">
+                    {% for thread in thread_list %}
+                    <div class="chip">
+                        <img src="static/images/anon-pp.png" alt="Thread Author">
+                        by {{thread.author}}
+                    </div>
+                    <a class="waves-effect waves-light btn-small">{{thread.get_topic_display}}</a>
+                    <ul class="collection">
+                            <li class="collection-item">
+                                <h5 class="heading">{{thread.title}}</h5>
+                                <p class="main-text">{{thread.thread_text}}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
 {% endblock %}

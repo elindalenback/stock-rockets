@@ -1,3 +1,4 @@
+// This script initializes Materialize side navigation components.
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {

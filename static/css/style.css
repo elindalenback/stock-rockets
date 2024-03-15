@@ -4,6 +4,8 @@
 /* font-family: "Montserrat", sans-serif; */
 /* font-family: "Open Sans", sans-serif; */
 
+/*--------------------------------------------------- General */
+
 .heading {
     font-family: "Montserrat", sans-serif;
 }
@@ -16,6 +18,15 @@
     background-color: rgba(0, 0, 0, 0.616);
 }
 
+.topic-collumn {
+    height: 800px;
+}
+
+.topics {
+    padding: 7px;
+}
+
+/*----------------------------------------------------- Footer */
 i {
     font-size: 3rem;
     padding: 1.2rem;
@@ -23,7 +34,7 @@ i {
 
 /* Screen size between tablet and larger laptop */
 @media (min-width: 770px) and (max-width: 1439px) {
-    /* Change size on social media links and text in footer */
+    /*-------------------------------------------------- Footer */
     i {
         font-size: 20px;
         padding: 1rem;
