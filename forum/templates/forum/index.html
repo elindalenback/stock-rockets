@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">search</i>
-                        <input type="text" id="autocomplete-input" class="autocomplete">
+                        <input type="text" id="autocomplete-input" class="autocomplete search-bar">
                         <label for="autocomplete-input">Search...</label>
                     </div>
                 </div>
@@ -60,24 +60,29 @@
         </ul>
     </div>
     <!-- Threads -->
-    <div class="col s12 m9">
+    <!-- Accsess the threadlist to use in JS -->
+    <div class="col s12 m9" id="threads-container">
         <div class="card-panel">
             {% for thread in thread_list %}
-            <div>
-                <div class="chip">
-                    <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
-                    by {{thread.author}}
+            <div class="thread-item" data-author="{{ thread.author }}" data-topic="{{ thread.get_topic_display }}"
+                data-slug="{{ thread.slug }}" data-title="{{ thread.title }}" data-text="{{ thread.thread_text | safe }}">
+                <div>
+                    <div class="chip">
+                        <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
+                        by {{thread.author}}
+                    </div>
+                    <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
                 </div>
-                <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
+                <ul class="collection">
+                    <li class="collection-item">
+                        <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
+                            <h5 id="search-title" class="heading">{{thread.title}}</h5>
+                            <p id="search-text" class="main-text">{{ thread.thread_text | safe | truncatewords:150 }}
+                            </p>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <ul class="collection">
-                <li class="collection-item">
-                    <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
-                        <h5 class="heading">{{thread.title}}</h5>
-                        <p class="main-text">{{ thread.thread_text | safe | truncatewords:150 }}</p>
-                    </a>
-                </li>
-            </ul>
             {% endfor %}
         </div>
     </div>
