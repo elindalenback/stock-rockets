@@ -109,8 +109,12 @@ a {
     padding: 0;
 }
 
-.masthead-text h4 {
+.comment-heading {
     font-size: 25px;
+}
+
+.textarea {
+    height: auto;
 }
 
 /*----------------------------------------------------- Footer */
