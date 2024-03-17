@@ -139,4 +139,3 @@ const displayThreads = (threads) => {
     threadListContainer.innerHTML = htmlString;
 };
 */
-

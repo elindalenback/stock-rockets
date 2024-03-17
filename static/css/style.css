@@ -89,7 +89,7 @@ a {
     color: black;
 }
 
-/*------------------------------------------ Thread Page */
+/*------------------------------------------------- Thread Page */
 .thread-info {
     display: flex;
     align-items: center; /* Align items vertically */
@@ -102,6 +102,15 @@ a {
 
 .thread-info a {
     margin-left: auto; /* Move the tag/button to the right */
+}
+
+#comment_count {
+    font-size: 20px;
+    padding: 0;
+}
+
+.masthead-text h4 {
+    font-size: 25px;
 }
 
 /*----------------------------------------------------- Footer */

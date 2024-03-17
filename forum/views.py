@@ -13,7 +13,7 @@ class ThreadList(generic.ListView):
         return context
 
 
-# Inspired by Code Institute "I Think Therefore I Blog" an modified for this project
+# Inspired by Code Institute "I Think Therefore I Blog" and modified for this project
 def thread_detail(request, slug):
     """
     Display an individual :model:`forum.Thread`.
@@ -30,6 +30,18 @@ def thread_detail(request, slug):
 
     queryset = Thread.objects.all()
     thread = get_object_or_404(queryset, slug=slug)
+    comments = thread.comments.all().order_by("-created_on")
+    comment_count = thread.comments.count()
+
+    return render(
+        request,
+        "forum/thread_detail.html",
+        {
+            "thread": thread,
+            "comments": comments,
+            "comment_count": comment_count,
+        },
+    )
 
     return render(
         request,

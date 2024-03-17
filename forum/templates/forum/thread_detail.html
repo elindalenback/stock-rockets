@@ -30,5 +30,42 @@
         </div>
     </div>
 </div>
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+  <!-- Displaying Comments -->
+  <div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <strong>
+                    <i class="far fa-comments" id="comment_count"></i> {{ comment_count }}
+                </strong> 
+                <h4> Comments: </h4>
+                <div class="thread-info">
+                    {% for comment in comments %}
+                    <div class="chip">
+                        <img src="{% static 'images/anon-pp.png' %}" alt="Comment Author">
+                        by {{ comment.author }}
+                    </div>
+                    <p> | {{ comment.created_on }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <p class="card-text">
+                    {{ comment.body | safe }}
+                </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
