@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Define your color palette
+    // Color palette
     var colorPalette = ["#007BFF", "#6F42C1", "#28A745", "#FFC107", "#17A2B8", "#DC3545", "#FD7E14", "#20c997", "#0d6efd", "#6610F2", "#6F42C1", "#D9534F", "#28A745", "#FFC107", "#17A2B8", "#DC3545", "#FD7E14"];
 
     // Select all buttons with class 'topic-buttons'
@@ -55,6 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Initialze Modal Materialize
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+});
+
 
 // Search functionality for threads
 // Accsess the lists from threads and add them to one array:

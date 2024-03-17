@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <!-- index.html content starts here -->
@@ -8,14 +10,28 @@
     <div class="col s12 m3">
         <div class="card-panel topic-collumn">
             <ul>
-                <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">All Topics</a></li>
-                <li class="topics"><a class="waves-effect waves-light btn-small custom-buttons">Following</a></li>
+                <!-- "All Topics" button -->
+                <li class="topics">
+                    <form method="GET" action="{% url 'home' %}">
+                        <button type="submit" name="topic" value="" class="waves-effect waves-light btn-small custom-buttons">All Topics</button>
+                    </form>
+                </li>
+                <!-- "Following" button -->
+                <li class="topics">
+                    <form method="GET" action="{% url 'home' %}">
+                        <button type="submit" name="topic" value="following" class="waves-effect waves-light btn-small custom-buttons">Following</button>
+                    </form>
+                </li>
             </ul>
             <hr>
             <h5>Topics:</h5>
             <ul>
                 {% for topic_id, topic_name in topics %}
-                <li class="topics"><a class="waves-effect waves-light btn-small topic-buttons">{{ topic_name }}</a></li>
+                <li class="topics">
+                    <form method="GET" action="{% url 'home' %}">
+                        <button type="submit" name="topic" value="{{ topic_id }}" class="waves-effect waves-light btn-small topic-buttons">{{ topic_name }}</button>
+                    </form>
+                </li>
                 {% endfor %}
             </ul>
         </div>
@@ -37,10 +53,21 @@
     </div>
     <div class="col s12 m9 above-threads">
         <!-- New thread button -->
-        <a class="waves-effect waves-light btn new-thread-btn">
+        <a class="waves-effect waves-light btn new-thread-btn modal-trigger" href="#modal1">
             <i class="material-icons right">add_circle</i>
             start new discussion
         </a>
+        <!-- New threads form in modal -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Create a new thread:</h4>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ thread_form|crispy }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
 
         <!-- Dropdown button -->
         <a class='dropdown-trigger btn sort-by-btn' href='#' data-target='dropdown1'>
@@ -60,7 +87,7 @@
         </ul>
     </div>
     <!-- Threads -->
-    <!-- Accsess the threadlist to use in JS -->
+    <!-- Accsess the threadlist to use in JS with threads-container id-->
     <div class="col s12 m9" id="threads-container">
         <div class="card-panel">
             {% for thread in thread_list %}
@@ -77,7 +104,8 @@
                     <li class="collection-item">
                         <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
                             <h5 id="search-title" class="heading">{{thread.title}}</h5>
-                            <p id="search-text" class="main-text">{{ thread.thread_text | safe | truncatewords:150 }}
+                            <p class="card-text">
+                                {{ thread.thread_text | safe }}
                             </p>
                         </a>
                     </li>
