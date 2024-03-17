@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comment, Thread
+from .models import Comment, Thread, TOPICS
 
 class ThreadForm(forms.ModelForm):
     class Meta:

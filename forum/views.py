@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Thread, TOPICS
 from .forms import CommentForm, ThreadForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class ThreadList(generic.ListView):
@@ -19,11 +20,13 @@ class ThreadList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['topics'] = TOPICS
         context['thread_form'] = ThreadForm()
+        print(TOPICS)
         return context
 
+@login_required
 def create_thread(request):
     if request.method == "POST":
-        thread_form = ThreadForm(request.POST)
+        thread_form = ThreadForm(data=request.POST)
         if thread_form.is_valid():
             thread = thread_form.save(commit=False)
             thread.author = request.user
