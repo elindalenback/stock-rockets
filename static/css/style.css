@@ -69,6 +69,11 @@ main {
     margin: 0;
 }
 
+/* Override Materialize CSS to make select element visible */
+#thread-form select {
+    display: block !important;
+}
+
 .sort-by-btn {
     background-color: rgb(56, 56, 56);
     width: auto;
@@ -90,17 +95,17 @@ a {
 }
 
 /*------------------------------------------------- Thread Page */
-.thread-info {
+.created-info {
     display: flex;
     align-items: center; /* Align items vertically */
 }
 
-.thread-info .chip {
+.created-info .chip {
     display: flex;
     align-items: center; /* Align items vertically */
 }
 
-.thread-info a {
+.created-info a {
     margin-left: auto; /* Move the tag/button to the right */
 }
 

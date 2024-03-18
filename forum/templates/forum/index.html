@@ -61,7 +61,7 @@
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <h4>Create a new thread:</h4>
-                <form method="post" action="/thread">
+                <form method="post" action="/thread" id="thread-form">
                     {% csrf_token %}
                     {{ thread_form|crispy }}
                     <button type="submit" class="btn btn-primary">Submit</button>
