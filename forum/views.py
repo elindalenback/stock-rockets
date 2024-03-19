@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, reverse, redirect, HttpResponseRedirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -9,6 +9,28 @@ from .forms import CommentForm, ThreadForm
 
 
 # Create your views here.
+@login_required
+def follow_list(request):
+    new = Thread.objects.filter(follow=request.user)
+    return render(
+        request,
+        "forum/profile.html",
+        {"new": new},
+    )
+
+
+@login_required 
+def follow_add(request, thread_id):
+    thread = get_object_or_404(Thread, pk=thread_id)
+    if thread.follow.filter(id=request.user.pk).exists():
+        thread.follow.remove(request.user)
+        messages.add_message(request, messages.SUCCESS, 'Unfollowed thread!')
+    else:
+        thread.follow.add(request.user)
+        messages.add_message(request, messages.SUCCESS, 'Followed thread!')
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
 class ThreadList(generic.ListView):
     template_name = "forum/index.html"
 

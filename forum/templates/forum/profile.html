@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="col s12 m9" id="threads-container">
+        <div class="card-panel">
+            {% for thread in new %}
+            <div class="thread-item" data-author="{{ thread.author }}" data-topic="{{ thread.get_topic_display }}"
+                data-slug="{{ thread.slug }}" data-title="{{ thread.title }}"
+                data-text="{{ thread.thread_text | safe }}">
+                <div>
+                    <div class="chip">
+                        <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
+                        by {{thread.author}}
+                    </div>
+                    <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
+                </div>
+                <ul class="collection">
+                    <li class="collection-item">
+                        {% if thread.slug %}
+                        <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
+                            <h5 id="search-title" class="heading">{{thread.title}}</h5>
+                            <p class="card-text">
+                                {{ thread.thread_text | safe }}
+                            </p>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

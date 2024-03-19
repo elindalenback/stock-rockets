@@ -25,6 +25,8 @@ class Thread(models.Model):
     thread_text = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+    follow = models.ManyToManyField(
+        User, related_name='follow', default=None, blank=True)
 
     class Meta:
         ordering = ["-created_on"]

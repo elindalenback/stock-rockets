@@ -22,6 +22,11 @@
     </div>
 </div>
 
+<form action="{% url 'follow_add' thread.thread_id %}" method="POST">
+    <button class="btn waves-effect waves-light" type="submit" name="follow_add">Follow Thhread</button>
+    {% csrf_token %}
+</form>
+
 <div class="container">
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
