@@ -51,6 +51,14 @@
             </div>
         </div>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <div class="col s12 m9 above-threads">
         <!-- New thread button -->
         <a class="waves-effect waves-light btn new-thread-btn modal-trigger" href="#modal1">

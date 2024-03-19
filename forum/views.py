@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from .models import Thread, TOPICS
+from django.contrib import messages
+from .models import Thread, TOPICS, Comment
 from .forms import CommentForm, ThreadForm
+
+
 
 # Create your views here.
 class ThreadList(generic.ListView):
@@ -23,6 +26,8 @@ class ThreadList(generic.ListView):
         context['thread_form'] = ThreadForm()
         return context
 
+        
+
 @login_required
 def create_thread(request):
     if request.method == "POST":
@@ -32,6 +37,8 @@ def create_thread(request):
             thread.author = request.user
             thread.save()
             return redirect('thread_detail', slug=thread.slug)
+        else:
+            messages.info(request, "There is some error with the details you provided. please retry." )
 
     else:  # For GET requests or invalid POST data
         thread_form = ThreadForm()
@@ -41,6 +48,8 @@ def create_thread(request):
         "forum/index.html",
         {
             'thread_form': thread_form,
+            'topics': TOPICS,
+            'thread_list': Thread.objects.all()
         },
     )
 
@@ -63,6 +72,8 @@ def thread_detail(request, slug):
     thread = get_object_or_404(queryset, slug=slug)
     comments = thread.comments.all().order_by("-created_on")
     comment_count = thread.comments.count()
+    print('COMMENTS IN DETAIL: ', comments)
+    print('SLUG: ', thread.slug)
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -95,11 +106,13 @@ def comment_edit(request, slug, comment_id):
     view to edit comments
     """
     if request.method == "POST":
-
         queryset = Thread.objects.all()
         thread = get_object_or_404(queryset, slug=slug)
-        comment = get_object_or_404(Comment, pk=comment_id)
+        comment = get_object_or_404(Comment, comment_id=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
+        print('THREAD: ', thread)
+        print('COMMENT: ', comment)
+        print('FORM: ', comment_form)
 
         if comment_form.is_valid() and comment.author == request.user:
             comment = comment_form.save(commit=False)
@@ -125,4 +138,4 @@ def comment_delete(request, slug, comment_id):
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
-    return HttpResponseRedirect(reverse('thread_details', args=[slug]))
+    return redirect('thread_detail', slug=thread.slug)

@@ -71,12 +71,12 @@
                                 </div>
                                 <p>{{ comment.created_on }}</p>
                             </div>
-                            <p id="comment{{ comment.id }}" class="card-text">
+                            <p id="comment{{ comment.comment_id }}" class="card-text">
                                 {{ comment.body | safe }}
                             </p>
-                            {% if user.is_authenticated and comment.author == user %}
-                            <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                            <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                            {% if request.user == comment.author %}
+                            <button data-target="deleteModal" class="btn btn-delete modal-trigger" comment_id="{{ comment.comment_id }}">Delete</button>
+                            <button class="btn btn-edit" comment_id="{{ comment.comment_id }}" data-slug="{{ thread.slug }}">Edit</button>
                             {% endif %}
                         </div>
                     </div>
@@ -84,29 +84,29 @@
                 {% endfor %}
             </div>
         </div>
+        
     </div>
 </div>
 <!-- Delete confirmation modal -->
-<div class="modal" id="deleteModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Delete comment?</h5>
-          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to delete your comment? This action cannot be undone.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="deleteConfirm" type="button" class="btn btn-danger">Delete</button>
-        </div>
-      </div>
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+      <h4>Are you sure you want to delete your comment?</h4>
+      <p></p>
     </div>
-  </div>
+    <div class="modal-footer">
+        <form id="deleteConfirm" method="DELETE">
+            <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
+
 
 {% endblock content %}
 
 {% block extras %}
+<script>
+    let thread_slug = `{{ thread.slug}}`
+</script>
 <script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}
