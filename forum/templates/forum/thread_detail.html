@@ -14,7 +14,7 @@
                         by {{thread.author}}
                     </div>
                     <p> | {{ thread.created_on }}</p>
-                    <a class="waves-effect waves-light btn-small topic-buttons">{{thread.get_topic_display}}</a>
+                    <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                             </p>
                             {% if request.user == comment.author %}
                             <button data-target="deleteModal" class="btn btn-delete modal-trigger" comment_id="{{ comment.comment_id }}">Delete</button>
-                            <button class="btn btn-edit" comment_id="{{ comment.comment_id }}" data-slug="{{ thread.slug }}">Edit</button>
+                            <button class="btn btn-edit" onclick="M.toast({html: 'You can now edit your comment'})"comment_id="{{ comment.comment_id }}" data-slug="{{ thread.slug }}">Edit</button>
                             {% endif %}
                         </div>
                     </div>

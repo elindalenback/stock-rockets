@@ -145,7 +145,7 @@ def comment_edit(request, slug, comment_id):
             comment = comment_form.save(commit=False)
             comment.thread = thread
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+            messages.add_message(request, messages.SUCCESS, 'Comment updated!')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 

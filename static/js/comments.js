@@ -39,6 +39,10 @@ for (let button of editButtons) {
   });
 }
 
+M.toast({html: 'You can now edit your comment'})
+
+
+
 /**
 * Initializes deletion functionality for the provided delete buttons.
 * 
