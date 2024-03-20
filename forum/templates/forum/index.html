@@ -38,7 +38,7 @@
     </div>
     <div class="col s12 m9 above-threads">
         <!-- New thread button -->
-        <a class="waves-effect waves-light btn new-thread-btn modal-trigger" href="#modal1">
+        <a class="waves-effect waves-light btn new-thread-btn modal-trigger" {% if user.is_authenticated %}href="#modal1"{% else %}href="{% url 'account_login' %}"{% endif %}>
             <i class="material-icons right">add_circle</i>
             start new discussion
         </a>
