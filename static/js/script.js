@@ -32,29 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// This script initializes Materialize drop down components for sorting threads.
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize dropdown components
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, {});
-
-    // Add event listener for dropdown options
-    document.querySelectorAll('#dropdown1 li').forEach(function(option) {
-        option.addEventListener('click', function() {
-            // Check if the clicked option is not a divider
-            if (!option.classList.contains('divider')) {
-                // Get the selected option text
-                var selectedOptionText = option.textContent.trim();
-
-                // Find the parent button element
-                var button = option.closest('.above-threads').querySelector('.sort-by-btn');
-
-                // Update the button text with the selected option text and readding the icon
-                button.innerHTML = '<i class="material-icons right">arrow_drop_down_circle</i> ' + selectedOptionText;
-            }
-        });
-    });
-});
 
 // Initialze Modal Materialize
 document.addEventListener('DOMContentLoaded', function() {
