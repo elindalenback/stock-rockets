@@ -11,23 +11,23 @@
         <div class="card-panel topic-collumn">
             <ul>
                 <!-- "All Topics" button -->
-                <li class="topics">
+                <li class="topics all-topic col s6 m12 l12">
                     <form method="GET" action="{% url 'home' %}">
                         <button type="submit" name="topic" value="" class="waves-effect waves-light btn-small custom-buttons">All Topics</button>
                     </form>
                 </li>
                 <!-- "Following" button -->
-                <li class="topics">
+                <li class="topics all-topic col s6 m12 l12">
                     <form method="GET" action="{% url 'follow_list' %}">
                         <button type="submit" name="topic" value="following" class="waves-effect waves-light btn-small custom-buttons">Following</button>
                     </form>
                 </li>
             </ul>
-            <hr>
+            <hr class="col s12">
             <h5>Topics:</h5>
             <ul>
                 {% for topic_id, topic_name in topics %}
-                <li class="topics">
+                <li class="topics col s6 m12 l12">
                     <form method="GET" action="{% url 'home' %}">
                         <button type="submit" name="topic" value="{{ topic_id }}" class="waves-effect waves-light btn-small topic-buttons">{{ topic_name }}</button>
                     </form>

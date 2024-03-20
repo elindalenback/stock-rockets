@@ -30,14 +30,18 @@ body {
 main {
     flex: 1;
 }
+/*------------------------------------------ Nav */
+#nav-icon {
+    padding: 0;
+}
 
 /*------------------------------------------ Topic Collumn */
 .topic-collumn {
     height: 800px;
 }
 
-.topics {
-    padding: 7px;
+.topics button {
+    margin-top: 12px;
 }
 
 .topic-buttons {
@@ -143,16 +147,66 @@ i {
     padding: 1.2rem;
 }
 
+@media (max-width: 840px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    .topic-buttons, .topics button {
+        font-size: 9px;
+        width: 100px;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+
+@media (max-width: 600px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    .topic-buttons, .topics button  {
+        font-size: 12px;
+        width: 150px;
+        text-align: center;
+        padding: 0;
+    }
+    .topic-collumn {
+        height: 400px;
+    }
+
+}
+
+@media (max-width: 400px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    .topic-buttons, .topics button {
+        font-size: 12px;
+        width: 100px;
+        text-align: center;
+        padding: 0;
+    }
+}
+
 /* Screen size between tablet and larger laptop */
-@media (min-width: 770px) and (max-width: 1439px) {
-    /*-------------------------------------------------- Footer */
-    i {
-        font-size: 20px;
-        padding: 1rem;
+@media (max-width: 280px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    .topic-buttons {
+        font-size: 9px;
+        width: 70px;
+        text-align: center;
+        padding: 0;
     }
     
     .social {
         font-size: 15px;
+    }
+
+    .card-panel.topic-column ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust button width as needed */
+        grid-gap: 10px; /* Adjust the gap between buttons */
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+    }
+    
+    .card-panel.topic-column li {
+        list-style: none; /* Remove default list styles */
+        margin: 0; /* Reset margin */
     }
 
   }
