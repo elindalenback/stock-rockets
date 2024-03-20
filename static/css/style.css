@@ -14,7 +14,10 @@
 }
 
 .dark-bg {
-    background-color: rgba(0, 0, 0, 0.616);
+    background-color: rgb(0, 0, 0);
+    position: sticky;
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure the navigation bar is above other content */
 }
 
 /*---------------------------------------------------- Main */
@@ -30,9 +33,42 @@ body {
 main {
     flex: 1;
 }
+
+/*------------------------------------------ Header */
+.hero {
+    width: 100%;
+    height: 30vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.hero img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    object-fit: custom; /* Ensure the video covers the entire viewport */
+    width: 100%; /* Set the width to cover the entire viewport */
+    height: 100%; /* Set the height to cover the entire viewport */
+}
+
+.header-content h1 {
+    text-align: center;
+    color: white;
+    font-size: 80px;
+    font-weight: 400;
+}
+
 /*------------------------------------------ Nav */
 #nav-icon {
     padding: 0;
+}
+
+nav ul li.active {
+    background-color: rgba(151, 159, 230, 0.274);
 }
 
 /*------------------------------------------ Topic Collumn */
@@ -155,11 +191,15 @@ i {
         text-align: center;
         padding: 0;
     }
+    .header-content h1 {
+        font-size: 40px;
+    }
 }
 
 
 @media (max-width: 600px) {
     /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    
     .topic-buttons, .topics button  {
         font-size: 12px;
         width: 150px;
@@ -169,7 +209,9 @@ i {
     .topic-collumn {
         height: 400px;
     }
-
+    .header-content h1 {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -207,6 +249,9 @@ i {
     .card-panel.topic-column li {
         list-style: none; /* Remove default list styles */
         margin: 0; /* Reset margin */
+    }
+    .header-content h1 {
+        font-size: 20px;
     }
 
   }
