@@ -33,7 +33,7 @@ class Thread(models.Model):
 
     def save(self):
         self.slug = self.title.lower().replace(" ", "-")
-        super().save(self)
+        super().save()
 
     def __str__(self):
         return f"{self.title} | posted by {self.author}"

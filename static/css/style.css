@@ -109,6 +109,10 @@ a {
     margin-left: auto; /* Move the tag/button to the right */
 }
 
+#follow-btn {
+    margin-bottom: 20px;
+}
+
 #comment_count {
     font-size: 20px;
     padding: 0;
