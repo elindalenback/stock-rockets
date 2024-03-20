@@ -8,9 +8,7 @@
     <div class="col s12 m9" id="threads-container">
         <div class="card-panel">
             {% for thread in new %}
-            <div class="thread-item" data-author="{{ thread.author }}" data-topic="{{ thread.get_topic_display }}"
-                data-slug="{{ thread.slug }}" data-title="{{ thread.title }}"
-                data-text="{{ thread.thread_text | safe }}">
+            <div class="thread-item">
                 <div>
                     <div class="chip">
                         <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
