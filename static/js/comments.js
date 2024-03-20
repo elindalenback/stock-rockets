@@ -36,12 +36,10 @@ for (let button of editButtons) {
     submitButton.innerText = "Update";
     // commentForm.setAttribute("action", `${slug}/edit_comment/${commentId}/`); // Use slug in action attribute
     commentForm.setAttribute("action", `${thread_slug}/edit_comment/${commentId}`);
+    // Display toast message when edit button is clicked
+    M.toast({ html: 'You can now edit your comment' });
   });
 }
-
-M.toast({html: 'You can now edit your comment'})
-
-
 
 /**
 * Initializes deletion functionality for the provided delete buttons.
