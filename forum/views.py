@@ -103,6 +103,10 @@ def thread_detail(request, slug):
             comment.author = request.user
             comment.thread = thread
             comment.save()
+            messages.success(request, f"Comment '{comment.body}' created successfully!")
+            return redirect('thread_detail', slug=comment.thread.slug)
+        else:
+            messages.error(request, "Failed to create comment. Please try again!")
 
     comment_form = CommentForm()
 

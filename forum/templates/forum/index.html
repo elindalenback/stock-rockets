@@ -36,29 +36,6 @@
             </ul>
         </div>
     </div>
-    <!-- Search Function -->
-    <div class="col s12 m9">
-        <!-- Search bar -->
-        <div class="row">
-            <div class="col s11 m11 l11">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">search</i>
-                        <input type="text" id="autocomplete-input" class="autocomplete search-bar">
-                        <label for="autocomplete-input">Search...</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-
     <div class="col s12 m9 above-threads">
         <!-- New thread button -->
         <a class="waves-effect waves-light btn new-thread-btn modal-trigger" href="#modal1">
@@ -76,23 +53,6 @@
                 </form>
             </div>
         </div>
-
-        <!-- Dropdown button -->
-        <a class='dropdown-trigger btn sort-by-btn' href='#' data-target='dropdown1'>
-            <i class="material-icons right">arrow_drop_down_circle</i>
-            Latest
-        </a>
-
-        <!-- Dropdown Structure -->
-        <ul id='dropdown1' class='dropdown-content'>
-          <li><a href="#!">Latest</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Most comments</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Most Likes</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!">Rising</a></li>
-        </ul>
     </div>
     <!-- Threads -->
     <!-- Accsess the threadlist to use in JS with threads-container id-->
