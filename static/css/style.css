@@ -69,6 +69,8 @@ main {
     margin: 0;
 }
 
+
+
 /* Override Materialize CSS to make select element visible */
 #thread-form select {
     display: block !important;
@@ -95,6 +97,10 @@ a {
 }
 
 /*------------------------------------------------- Thread Page */
+.masthead {
+    margin-top: 20px;
+}
+
 .created-info {
     display: flex;
     align-items: center; /* Align items vertically */
@@ -103,6 +109,7 @@ a {
 .created-info .chip {
     display: flex;
     align-items: center; /* Align items vertically */
+    line-height: 1.1;
 }
 
 .created-info a {
@@ -124,6 +131,10 @@ a {
 
 .textarea {
     height: auto;
+}
+
+#thread-text-card {
+    width: 100%;
 }
 
 /*----------------------------------------------------- Footer */

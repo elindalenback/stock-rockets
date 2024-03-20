@@ -58,9 +58,10 @@ def create_thread(request):
             thread = thread_form.save(commit=False)
             thread.author = request.user
             thread.save()
+            messages.add_message(request, messages.SUCCESS, 'YAY! You posted a new thread!')
             return redirect('thread_detail', slug=thread.slug)
         else:
-            messages.info(request, "There is some error with the details you provided. please retry." )
+            messages.info(request, "There is some error with the details you provided. Please retry." )
 
     else:  # For GET requests or invalid POST data
         thread_form = ThreadForm()
