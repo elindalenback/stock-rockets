@@ -66,6 +66,7 @@
     <!-- Accsess the threadlist to use in JS with threads-container id-->
     <div class="col s12 m9" id="threads-container">
         <div class="card-panel">
+            {% if thread_list %}
             {% for thread in thread_list %}
             <div class="thread-item">
                 <div>
@@ -89,6 +90,9 @@
                 </ul>
             </div>
             {% endfor %}
+            {% else %}
+            <p>No threads for that topic yet</p>
+            {% endif %}
         </div>
     </div>
 </div>

@@ -6,34 +6,39 @@
 {% block content %}
 <div class="container">
     <div class="col s12 m9" id="threads-container">
+        <h1>Following threads:</h1>
         <div class="card-panel">
+            {% if new %}
             {% for thread in new %}
             <div class="thread-item">
                 <div>
                     <div class="chip">
                         <img src="{% static 'images/anon-pp.png' %}" alt="Thread Author">
-                        by {{thread.author}}
+                        by {{ thread.author }}
                     </div>
-                    <a class="waves-effect waves-light btn-small topic-buttons right">{{thread.get_topic_display}}</a>
+                    <a class="waves-effect waves-light btn-small topic-buttons right">{{ thread.get_topic_display }}</a>
                 </div>
                 <ul class="collection">
                     <li class="collection-item">
                         {% if thread.slug %}
                         <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
-                            <h5 id="search-title" class="heading">{{thread.title}}</h5>
-                            <p class="card-text">
-                                {{ thread.thread_text | safe }}
-                            </p>
+                            <h5 id="search-title" class="heading">{{ thread.title }}</h5>
+                            <p class="card-text">{{ thread.thread_text | safe }}</p>
                         </a>
                         {% endif %}
                     </li>
                 </ul>
+                <form id="follow-form" action="{% url 'follow_add' thread.thread_id %}" method="POST">
+                    <button class="btn unfollow-btn waves-effect waves-light" type="submit" name="follow_add">Unfollow
+                        Thread</button>
+                    {% csrf_token %}
+                </form>
             </div>
-            <form id="follow-form" action="{% url 'follow_add' thread.thread_id %}" method="POST">
-                <button class="btn unfollow-btn waves-effect waves-light" type="submit" name="follow_add">Unfollow Thread</button>
-                {% csrf_token %}
-            </form>
             {% endfor %}
+            {% else %}
+            <p>You are not following any threads</p>
+            {% endif %}
+
         </div>
     </div>
 </div>
