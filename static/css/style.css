@@ -183,6 +183,10 @@ i {
     padding: 1.2rem;
 }
 
+.link-footer {
+    color: white;
+}
+
 @media (max-width: 840px) {
     /*------------------------------------------------- Topic Collumn & Thread Collumn */
     .topic-buttons, .topics button {
