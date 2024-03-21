@@ -63,8 +63,21 @@
   </nav>
   <ul class="sidenav" id="mobile-demo">
     <li class="{% if request.path == home_url %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
-    <li><a href="badges.html">Sign up</a></li>
-    <li><a href="collapsible.html">Log in</a></li>
+    {% if user.is_authenticated %}
+    <li class="{% if request.path == logout_url %}active{% endif %}">
+      <a href="{% url 'account_logout' %}">Logout</a>
+    </li>
+    <li class="{% if request.resolver_match.url_name == 'follow_list' %}active{% endif %}">
+      <a href="{% url 'follow_list' %}">Profile</a>
+    </li>
+    {% else %}
+    <li class="{% if request.resolver_match.url_name == 'account_signup' %}active{% endif %}">
+      <a href="{% url 'account_signup' %}">Register</a>
+    </li>
+    <li class="{% if request.resolver_match.url_name == 'account_login' %}active{% endif %}">
+      <a href="{% url 'account_login' %}">Login</a>
+    </li>
+    {% endif %}
   </ul>
 
 

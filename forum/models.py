@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import re
 
 TOPICS = (
     (0, "News"),
@@ -33,6 +34,7 @@ class Thread(models.Model):
 
     def save(self):
         self.slug = self.title.lower().replace(" ", "-")
+        self.slug = re.sub(r'[^a-z0-9-]', '', self.slug)  # Remove special characters
         super().save()
 
     def __str__(self):

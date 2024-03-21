@@ -6,9 +6,8 @@ from django.contrib import messages
 from .models import Thread, TOPICS, Comment
 from .forms import CommentForm, ThreadForm
 
-
-
-# Create your views here.
+# This function requires the user to be logged in. It retrieves a list of threads followed by the current user.
+# It renders a template displaying the profile page with the list of followed threads.
 @login_required
 def follow_list(request):
     new = Thread.objects.filter(follow=request.user)
@@ -18,7 +17,8 @@ def follow_list(request):
         {"new": new},
     )
 
-
+# This function requires the user to be logged in. It allows users to add or remove threads from their followed list.
+# It redirects the user back to the previous page after the action is completed.
 @login_required 
 def follow_add(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
@@ -30,7 +30,7 @@ def follow_add(request, thread_id):
         messages.add_message(request, messages.SUCCESS, 'Followed thread!')
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-
+# This class-based view displays a list of threads based on the selected topic or all threads if no topic is selected.
 class ThreadList(generic.ListView):
     template_name = "forum/index.html"
 
@@ -48,8 +48,8 @@ class ThreadList(generic.ListView):
         context['thread_form'] = ThreadForm()
         return context
 
-        
-
+# This function requires the user to be logged in. It allows users to create a new thread.
+# It renders the index page with a form to create a new thread.
 @login_required
 def create_thread(request):
     if request.method == "POST":
@@ -76,27 +76,14 @@ def create_thread(request):
         },
     )
 
-# Inspired by Code Institute "I Think Therefore I Blog" and modified for this project
+# This function displays details of a specific thread, including its comments.
+# It also allows users to add comments to the thread.
 def thread_detail(request, slug):
-    """
-    Display an individual :model:`forum.Thread`.
-
-    **Context**
-
-    ``thread``
-        An instance of :model:`forum.Thread`.
-
-    **Template:**
-
-    :template:`forum/thread_detail.html`
-    """
-
     queryset = Thread.objects.all()
     thread = get_object_or_404(queryset, slug=slug)
     comments = thread.comments.all().order_by("-created_on")
     comment_count = thread.comments.count()
-    print('COMMENTS IN DETAIL: ', comments)
-    print('SLUG: ', thread.slug)
+
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -122,24 +109,13 @@ def thread_detail(request, slug):
         },
     )
 
-    return render(
-        request,
-        "forum/thread_detail.html",
-        {"thread": thread},
-    )
-
+# This function allows users to edit their comments on a thread.
 def comment_edit(request, slug, comment_id):
-    """
-    view to edit comments
-    """
     if request.method == "POST":
         queryset = Thread.objects.all()
         thread = get_object_or_404(queryset, slug=slug)
         comment = get_object_or_404(Comment, comment_id=comment_id)
         comment_form = CommentForm(data=request.POST, instance=comment)
-        print('THREAD: ', thread)
-        print('COMMENT: ', comment)
-        print('FORM: ', comment_form)
 
         if comment_form.is_valid() and comment.author == request.user:
             comment = comment_form.save(commit=False)
@@ -151,10 +127,8 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('thread_detail', args=[slug]))
 
+# This function allows users to delete their comments on a thread.
 def comment_delete(request, slug, comment_id):
-    """
-    view to delete comment
-    """
     queryset = Thread.objects.all()
     thread = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
