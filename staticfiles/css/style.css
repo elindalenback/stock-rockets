@@ -1,0 +1,265 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* font-family: "Montserrat", sans-serif; */
+/* font-family: "Open Sans", sans-serif; */
+
+/*--------------------------------------------------- General */
+.heading {
+    font-family: "Montserrat", sans-serif;
+}
+
+.main-text {
+    font-family: "Open Sans", sans-serif;
+}
+
+.dark-bg {
+    background-color: rgb(0, 0, 0);
+    position: sticky;
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure the navigation bar is above other content */
+}
+
+/*---------------------------------------------------- Main */
+/* Takes up empty space to always push footer down 1. */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /* background-color: rgb(70, 70, 70);*/ 
+}
+
+/* Takes up empty space to always push footer down 2. */
+main {
+    flex: 1;
+}
+
+/*------------------------------------------ Header */
+.hero {
+    width: 100%;
+    height: 30vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.hero img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    object-fit: custom; /* Ensure the video covers the entire viewport */
+    width: 100%; /* Set the width to cover the entire viewport */
+    height: 100%; /* Set the height to cover the entire viewport */
+}
+
+.header-content h1 {
+    text-align: center;
+    color: white;
+    font-size: 80px;
+    font-weight: 400;
+}
+
+/*------------------------------------------ Nav */
+#nav-icon {
+    padding: 0;
+}
+
+nav ul li.active {
+    background-color: rgba(151, 159, 230, 0.274);
+}
+
+/*------------------------------------------ Topic Collumn */
+.topic-collumn {
+    height: 800px;
+}
+
+.topics button {
+    margin-top: 12px;
+}
+
+.topic-buttons {
+    width: 140px;
+}
+
+.topic-buttons:hover {
+    background-color: rgb(56, 56, 56) !important;
+}
+
+.custom-buttons {
+    width: 140px;
+    background-color: rgb(62, 62, 62);
+}
+
+/*------------------------------------------ Thread Collumn */
+.new-thread-btn {
+    background-color: #f8c21a;
+    width: 250px;
+}
+
+.new-thread-btn:hover {
+    background-color: white;
+    color: #f8c21a;
+}
+
+.new-thread-btn i {
+    padding: 0 5px;
+    margin: 0;
+}
+
+
+
+/* Override Materialize CSS to make select element visible */
+#thread-form select {
+    display: block !important;
+}
+
+.sort-by-btn {
+    background-color: rgb(56, 56, 56);
+    width: auto;
+    color: white;
+}
+
+.sort-by-btn i {
+    padding: 0 5px;
+    margin: 0;
+}
+
+.above-threads {
+    display: flex; 
+    justify-content: space-between;
+}
+
+a {
+    color: black;
+}
+
+/*------------------------------------------------- Thread Page */
+.masthead {
+    margin-top: 20px;
+}
+
+.created-info {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.created-info .chip {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    line-height: 1.1;
+}
+
+.created-info a {
+    margin-left: auto; /* Move the tag/button to the right */
+}
+
+#follow-btn {
+    margin-bottom: 20px;
+}
+
+#comment_count {
+    font-size: 20px;
+    padding: 0;
+}
+
+.comment-heading {
+    font-size: 25px;
+}
+
+.textarea {
+    height: auto;
+}
+
+#thread-text-card {
+    width: 100%;
+}
+
+/*------------------------------------------------- Profile Page */
+.unfollow-btn {
+    margin-bottom: 20px;
+}
+
+/*----------------------------------------------------- Footer */
+i {
+    font-size: 3rem;
+    padding: 1.2rem;
+}
+
+.link-footer {
+    color: white;
+}
+
+@media (max-width: 840px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    .topic-buttons, .topics button {
+        font-size: 9px;
+        width: 100px;
+        text-align: center;
+        padding: 0;
+    }
+    .header-content h1 {
+        font-size: 40px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    
+    .topic-buttons, .topics button  {
+        font-size: 12px;
+        width: 150px;
+        text-align: center;
+        padding: 0;
+    }
+    .topic-collumn {
+        height: 400px;
+    }
+    .header-content h1 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    .topic-buttons, .topics button {
+        font-size: 12px;
+        width: 100px;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+/* Screen size between tablet and larger laptop */
+@media (max-width: 280px) {
+    /*------------------------------------------------- Topic Collumn & Thread Collumn */
+    .topic-buttons {
+        font-size: 9px;
+        width: 70px;
+        text-align: center;
+        padding: 0;
+    }
+    
+    .social {
+        font-size: 15px;
+    }
+
+    .card-panel.topic-column ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust button width as needed */
+        grid-gap: 10px; /* Adjust the gap between buttons */
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+    }
+    
+    .card-panel.topic-column li {
+        list-style: none; /* Remove default list styles */
+        margin: 0; /* Reset margin */
+    }
+    .header-content h1 {
+        font-size: 20px;
+    }
+  }
