@@ -177,6 +177,11 @@ a {
     width: 100%;
 }
 
+/*------------------------------------------------- Profile Page */
+.unfollow-btn {
+    margin-bottom: 20px;
+}
+
 /*----------------------------------------------------- Footer */
 i {
     font-size: 3rem;
@@ -257,5 +262,4 @@ i {
     .header-content h1 {
         font-size: 20px;
     }
-
   }

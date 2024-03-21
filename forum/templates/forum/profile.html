@@ -29,6 +29,10 @@
                     </li>
                 </ul>
             </div>
+            <form id="follow-form" action="{% url 'follow_add' thread.thread_id %}" method="POST">
+                <button class="btn unfollow-btn waves-effect waves-light" type="submit" name="follow_add">Unfollow Thread</button>
+                {% csrf_token %}
+            </form>
             {% endfor %}
         </div>
     </div>

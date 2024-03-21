@@ -25,13 +25,11 @@
                     </form>
                 </li>
                 <!-- "Following" button -->
-                {% if user.is_authenticated %}
                 <li class="topics all-topic col s6 m12 l12">
-                    <form method="GET" action="{% url 'follow_list' %}">
+                    <form method="GET" {% if user.is_authenticated %}action="{% url 'follow_list' %}"{% else %}action="{% url 'account_login' %}"{% endif %}>
                         <button type="submit" name="topic" value="following" class="waves-effect waves-light btn-small custom-buttons">Following</button>
                     </form>
                 </li>
-                {% endif %}
             </ul>
             <hr class="col s12">
             <h5>Topics:</h5>
