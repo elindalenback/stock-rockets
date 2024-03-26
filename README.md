@@ -6,7 +6,7 @@ This repository hosts the codebase for Stock Rockets, providing users with a pla
 
 Visit the deployed site: [Stock Rockets Forum](link goes here)
 
-![Stock Rockets Forum](static/images/stockrockets-responsive.png)
+![Stock Rockets Forum](docs/readme_images/stockrockets-responsive.png)
 
 ## Site Owner Goals for Stock Rockets Forum
 
@@ -63,7 +63,7 @@ In designing the color scheme for Stock Rockets, the following colors were caref
 
 - **Materialize Green Color for Buttons:** Buttons such as "Sign In," "Register," "Delete," and "Edit Comment" adopt the Materialize green color, maintaining consistency with the framework and enhancing user familiarity.
 
-![Color Scheme](static/images/stock-rockets-colors.png)
+![Color Scheme](docs/readme_images/stock-rockets-colors.png)
 This color scheme was created by [Coolors](https://coolors.co/).
 
 ### Typography
@@ -84,19 +84,19 @@ Wireframes were produced using Balsamiq. These wireframes were created prior to 
 
  <summary>Wireframe</summary>
 
-![Stock Rockets Wireframe](add picture here)
+![Stock Rockets Wireframe](docs/wireframes/)
  </details>
 
 ## Features
 
 ### Header
-![Header](static/images/home-page-header.png)
+![Header](docs/readme_images/home-page-header.png)
 The homepage features a header showcasing imagery of the earth and outer space, symbolizing the essence of Stock Rockets and conveying the notion of *the sky is the limit*.
 
 ### Navigation Bar
-![Nav on large screens](static/images/nav-large.png)
-![Nav on small screens closed](static/images/nav-small-closed.png)
-![Nav on small screens open](static/images/nav-small-open.png)
+![Nav on large screens](docs/readme_images/nav-large.png)
+![Nav on small screens closed](docs/readme_images/nav-small-closed.png)
+![Nav on small screens open](docs/readme_images/nav-small-open.png)
 
 The navigation bar is transformed into a hamburger icon, which reveals a side slide-out menu on smaller screens. An active class is dynamically assigned to the page the user is currently on, displaying a blue/violet color on larger screens and a gray color on the mobile menu.
 
@@ -104,13 +104,15 @@ The navigation bar adapts based on whether the user is signed in or not.
 
 #### When Not Signed In:
 
-![Nav not signed in](static/images/nav-not-signed-in.png)
+![Nav not signed in](docs/readme_images/nav-not-signed-in.png)
 
 #### When Signed In:
 
-![Nav signed in](static/images/nav-signed-in.png)
+![Nav signed in](docs/readme_images/nav-signed-in.png)
 
 <h3 style="text-decoration: underline;">Home Page</h3>
+
+![Home Page](docs/readme_images/home-page.png)
 
 ### Thread Display
 
@@ -123,7 +125,7 @@ The main content area of the home page features a list of discussion threads, pr
 
 Users can interact with the discussion threads by clicking on the thread title, which redirects them to the full thread details page, where they can view the complete discussion and participate in the conversation.
 
-![Home Page](static/images/home-page.png)
+![Threads List](docs/readme_images/threads.png)
 
 ### Topic Buttons
 
@@ -136,10 +138,10 @@ The topic buttons on the page serve a dual purpose:
 Additionally, a special "All Topics" button is provided, allowing users to reset the topic filter and display all discussion threads regardless of their categorization. This ensures that users have the option to browse discussions across all topics whenever desired.
 
 *Here are the topic buttons displayed*:
-![Topic buttons](static/images/topic-btns.png)
+![Topic buttons](docs/readme_images/topic-btns.png)
 
-*Here is a demonstration of threads filtered by the topic "analysis"*:
-![Topic buttons](static/images/topic-display-thread.png)
+*A demonstration of threads filtered by the topic "analysis"*:
+![Topic buttons](docs/readme_images/topic-display-thread.png)
 
 The buttons also feature hover effects, enhancing user experience by providing visual feedback when users interact with them.
 
@@ -147,4 +149,86 @@ The buttons also feature hover effects, enhancing user experience by providing v
 
 A modal window is utilized for creating new discussion threads. This modal offers a user-friendly interface for users to input details such as the thread title, text, and select the topic category. The modal appear when the "Start new discussion"-button is clicked.
 
-[]
+*Start New Discussion Button:*
+![Start New Discussion Button](docs/readme_images/start-new-btn.png)
+
+*Start New Discussion Button when hovered:*
+![Start New Discussion Button - hovered](docs/readme_images/start-new-btn-hover.png)
+
+*When the button is clicked this modal opens:*
+![Start New Discussion Modal](docs/readme_images/create-new.png)
+
+*The user gets to choose a topic:*
+![Choose Topic](docs/readme_images/create-new-choose-topic.png)
+
+If the thread title already exists in a previous post, the user receives a notification stating that there is an issue with the post and is prompted to try again. Upon reopening the modal, an error message informs the user that a thread with the same title already exists. This will also show if there are some other error with thw post.
+
+*Error notification for thread title and other post-related issues:*
+![Error notification](docs/readme_images/error-message-thread.png)
+
+*Specific error notification for thread title:*
+![Error notification thread title](docs/readme_images/change-title.png)
+
+<h3 style="text-decoration: underline;">Thread Detail Page</h3>
+
+![Thread Detail Page](docs/readme_images/view-thread-page.png)
+
+### Masthead
+The masthead section contains information about the thread author and the thread's creation date. It displays the author's profile picture, username, and the date when the thread was created. Additionally, it includes a button for users to follow the thread if they are logged in. When a user follows a thread a toast gives userfeedback and stating that the user has followed a thread. If the user clicks twice on the button it will unfollow the thread the second click. 
+
+If the user is not authenticated, it prompts them to log in to follow the thread.
+
+*Follow thread:*
+![Follow thread](docs/readme_images/follow.png)
+
+*Log in to follow thread:*
+![Log in to follow thread message](docs/readme_images/log-in-to-follow.png)
+
+### Thread Content
+The main content area displays the title and text of the thread. It provides users with the core information of the thread and allows them to read the content. The thread title is displayed prominently, followed by the thread text.
+
+### Comments Section
+The comments section displays comments made by users on the thread. Each comment includes the author's name, profile picture, and the date when the comment was created. Users can view comments and interact with them, such as deleting or editing their own comments if they are the author. There's a form for authenticated users to leave a new comment. When a user creates a new comment or edit an existing one they get a toast that confirms their actions taken.
+
+If the user is not authenticated, it prompts them to log in to leave a comment.
+
+*The comment section:*
+![Comment Section](docs/readme_images/comments.png)
+
+*Displaying comment count and user feedback to indicate the username the user will post the comment as:*
+![Comment count](docs/readme_images/comment-count.png)
+
+*If user is not authenticated:*
+![Log in to comment](docs/readme_images/log-in-to-comment.png)
+
+### Delete Confirmation Modal
+The delete confirmation modal provides a confirmation dialog for users before they delete their comments. It asks users to confirm their action before permanently deleting their comment. Users can either confirm or cancel the deletion action using the provided buttons.
+If the user chooses to delete a toast will apear with a confirmation message stating that the comment is deleted.
+
+![Delete modal](docs/readme_images/delete-modal.png)
+
+<h3 style="text-decoration: underline;">Profile Page</h3>
+
+![Profile Page](docs/readme_images/following-profile-page.png)
+
+### Display Followed Threads
+
+At the profile page, users can view a list of all the threads they are following, presented in a format similar to the feed on the homepage.
+
+### Unfollow Threads
+
+If a user wishes to unfollow a thread, they can simply click the 'Unfollow Thread' button, and the thread will be removed from their list. Additionally, they will receive a toast message confirming that they have successfully unfollowed the thread.
+
+![Unfollow Thread](docs/readme_images/unfollow-thread.png)
+
+<h3 style="text-decoration: underline;">Sign in/Sign out/Sign up</h3>
+
+Django allauth was installed and used to create the Sign up, Log in and Log out functionality.
+Success messages inform the user if they have logged in/ logged out successfully.
+
+![Sign in](docs/readme_images/sign-in-page.png)
+
+![Sign out](docs/readme_images/sign-out-page.png)
+
+![Sign up](docs/readme_images/register-page.png)
+
