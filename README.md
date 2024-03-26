@@ -6,7 +6,7 @@ This repository hosts the codebase for Stock Rockets, providing users with a pla
 
 Visit the deployed site: [Stock Rockets Forum](link goes here)
 
-![Stock Rockets Forum](picture of the landing page)
+![Stock Rockets Forum](static/images/stockrockets-responsive.png)
 
 ## Site Owner Goals for Stock Rockets Forum
 
@@ -87,3 +87,64 @@ Wireframes were produced using Balsamiq. These wireframes were created prior to 
 ![Stock Rockets Wireframe](add picture here)
  </details>
 
+## Features
+
+### Header
+![Header](static/images/home-page-header.png)
+The homepage features a header showcasing imagery of the earth and outer space, symbolizing the essence of Stock Rockets and conveying the notion of *the sky is the limit*.
+
+### Navigation Bar
+![Nav on large screens](static/images/nav-large.png)
+![Nav on small screens closed](static/images/nav-small-closed.png)
+![Nav on small screens open](static/images/nav-small-open.png)
+
+The navigation bar is transformed into a hamburger icon, which reveals a side slide-out menu on smaller screens. An active class is dynamically assigned to the page the user is currently on, displaying a blue/violet color on larger screens and a gray color on the mobile menu.
+
+The navigation bar adapts based on whether the user is signed in or not.
+
+#### When Not Signed In:
+
+![Nav not signed in](static/images/nav-not-signed-in.png)
+
+#### When Signed In:
+
+![Nav signed in](static/images/nav-signed-in.png)
+
+<h3 style="text-decoration: underline;">Home Page</h3>
+
+### Thread Display
+
+The main content area of the home page features a list of discussion threads, providing users with easy access to ongoing conversations. Each discussion thread is presented in a card panel format, containing the following information:
+
+- **Author's Name:** The name of the user who authored the thread.
+- **Topic:** The topic under which the thread is categorized.
+- **Thread Title:** The title of the discussion thread.
+- **Thread Text:** A brief excerpt or summary of the thread content.
+
+Users can interact with the discussion threads by clicking on the thread title, which redirects them to the full thread details page, where they can view the complete discussion and participate in the conversation.
+
+![Home Page](static/images/home-page.png)
+
+### Topic Buttons
+
+The topic buttons on the page serve a dual purpose:
+
+1. **Visual Categorization:** Each discussion thread is associated with a specific topic, visually indicated by the topic buttons. These buttons provide an appealing way of displaying which topic a thread is categorized under, allowing users to quickly identify the subject matter of each discussion.
+
+2. **Filtering Threads:** When a user clicks on a specific topic button, the page dynamically filters and displays only those discussion threads that are categorized under the selected topic. This functionality enables users to focus on discussions related to their areas of interest.
+
+Additionally, a special "All Topics" button is provided, allowing users to reset the topic filter and display all discussion threads regardless of their categorization. This ensures that users have the option to browse discussions across all topics whenever desired.
+
+*Here are the topic buttons displayed*:
+![Topic buttons](static/images/topic-btns.png)
+
+*Here is a demonstration of threads filtered by the topic "analysis"*:
+![Topic buttons](static/images/topic-display-thread.png)
+
+The buttons also feature hover effects, enhancing user experience by providing visual feedback when users interact with them.
+
+### Modal for Creating New Threads
+
+A modal window is utilized for creating new discussion threads. This modal offers a user-friendly interface for users to input details such as the thread title, text, and select the topic category. The modal appear when the "Start new discussion"-button is clicked.
+
+[]
