@@ -87,6 +87,43 @@ Wireframes were produced using Balsamiq. These wireframes were created prior to 
 ![Stock Rockets Wireframe](docs/wireframes/)
  </details>
 
+## Data Model
+
+In this project, principles of Object-Oriented Programming were applied along with Django's Class-Based Generic Views. Django AllAuth facilitated the user authentication system.
+
+### Thread Model
+
+The Thread model enables users to initiate discussion threads. It includes the following fields:
+
+- **thread_id:** Auto-incremented primary key for each thread.
+- **author:** Foreign key to the User model, indicating the author of the thread.
+- **title:** CharField for the title of the thread.
+- **slug:** SlugField for creating SEO-friendly URLs.
+- **topic:** IntegerField representing the topic category of the thread.
+- **thread_text:** TextField containing the content of the thread.
+- **created_on:** DateTimeField recording the date and time of thread creation.
+- **updated_on:** DateTimeField recording the last update time of the thread.
+- **follow:** Many-to-many relationship field with User model, allowing users to follow threads.
+
+### Comment Model
+
+The Comment model facilitates users to comment on individual threads. It consists of the following fields:
+
+- **comment_id:** Auto-incremented primary key for each comment.
+- **thread:** Foreign key to the Thread model, linking the comment to a specific thread.
+- **author:** Foreign key to the User model, indicating the author of the comment.
+- **body:** TextField containing the content of the comment.
+- **created_on:** DateTimeField recording the date and time of comment creation.
+- **updated_on:** DateTimeField recording the last update time of the comment.
+
+The schema diagram below illustrates the database structure.
+
+![Data Schema](docs/readme_images/)
+
+## Testing
+
+Testing and results can be found [here in the TESTING.md file](/TESTING.md)
+
 ## Features
 
 ### Header
@@ -225,6 +262,8 @@ If a user wishes to unfollow a thread, they can simply click the 'Unfollow Threa
 
 Django allauth was installed and used to create the Sign up, Log in and Log out functionality.
 Success messages inform the user if they have logged in/ logged out successfully.
+
+The HTML for theese pages where taken and modified for this project from - [Code Institute - I Think Therefore I Blog](https://github.com/Code-Institute-Solutions/blog)
 
 ![Sign in](docs/readme_images/sign-in-page.png)
 
@@ -365,7 +404,7 @@ To clone this repository follow the below steps:
 - [Stack Overflow](https://stackoverflow.com/)
 - [Materialize](https://materializecss.com)
 - [Pexels](https://www.pexels.com/): All imagery on the site was sourced from Pexels.com
-- [Code Institute - I Think Therefore I Blog](https://github.com/Code-Institute-Solutions/Django3blog)
+- [Code Institute - I Think Therefore I Blog](https://github.com/Code-Institute-Solutions/blog)
 
 ## Acknowledgments
 
