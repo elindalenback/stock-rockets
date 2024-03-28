@@ -4,7 +4,7 @@ Stock Rockets is an online forum dedicated to discussions surrounding various ec
 
 This repository hosts the codebase for Stock Rockets, providing users with a platform to engage in insightful conversations, share knowledge, and stay updated on the latest trends and developments in the realm of economics and finance.
 
-Visit the deployed site: [Stock Rockets Forum](link goes here)
+Visit the deployed site: [Stock Rockets Forum](https://stockrocket-1b5e32a3bb64.herokuapp.com/)
 
 ![Stock Rockets Forum](docs/readme_images/stockrockets-responsive.png)
 
@@ -351,7 +351,7 @@ To deploy this page to Heroku from its GitHub repository, the following steps we
 ### Update Heroku Config Vars
 Add the following Config Vars in Heroku:
 - SECRET_KEY value 
-- CLOUDINARY_URL
+- DATABASE_URL
 
 ### Deploy
 - NB: Ensure in Django settings, DEBUG is False
@@ -361,7 +361,7 @@ Add the following Config Vars in Heroku:
 
 The site is now live and operational.
 ## Forking this repository
-- Locate the repository at this link [StockRockets](link to stockrockets).
+- Locate the repository at this link [StockRockets](https://github.com/elindalenback/stock-rockets).
 - At the top of the repository, on the right side of the page, select "Fork" from the buttons available. 
 - A copy of the repository is now created.
 
@@ -414,4 +414,4 @@ To clone this repository follow the below steps:
 
 Many thanks to my mentor A Sandeep for his support and valuable insights and advice. Thanks to The Code Institute tutoring for all your patience and help.
 
-Also, many thanks to my fellow student Anton Eriksson.
+Also, many thanks to my fellow student Anton Eriksson. For all the problem solving and for letting me use your Heroku account to deploy my site.
