@@ -84,7 +84,7 @@ Wireframes were produced using Balsamiq. These wireframes were created prior to 
 
  <summary>Wireframe</summary>
 
-![Stock Rockets Wireframe](docs/wireframes/)
+![Stock Rockets Wireframe](docs/wireframes/stock-rockets-wireframe.png)
  </details>
 
 ## Data Model
@@ -118,7 +118,7 @@ The Comment model facilitates users to comment on individual threads. It consist
 
 The schema diagram below illustrates the database structure.
 
-![Data Schema](docs/readme_images/)
+![Data Schema](docs/wireframes/stock-rockets-lucidchart.png)
 
 ## Testing
 
@@ -270,6 +270,10 @@ The HTML for theese pages where taken and modified for this project from - [Code
 ![Sign out](docs/readme_images/sign-out-page.png)
 
 ![Sign up](docs/readme_images/register-page.png)
+
+### Footer
+
+The footer follows the same style as the navigation bar, featuring a black background color, white text, and icons. This design choice ensures consistency in styling across the entire site.
 
 ## Future Features
 
