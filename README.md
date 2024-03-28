@@ -368,7 +368,7 @@ The site is now live and operational.
 ## Cloning this repository
 To clone this repository follow the below steps: 
 
-1. Locate the repository at this link [StockRockets](Link to respitory at github). 
+1. Locate the repository at this link [StockRockets](https://github.com/elindalenback/stock-rockets). 
 2. Under **'Code'**, see the different cloning options, HTTPS, SSH, and GitHub CLI. Click the prefered cloning option, and then copy the link provided. 
 3. Open **Terminal**.
 4. In Terminal, change the current working directory to the desired location of the cloned directory.
