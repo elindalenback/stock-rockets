@@ -30,7 +30,7 @@
 </div>
 {% else %}
 <div class="container" id="follow-btn">
-    <p>Log in to follow thread</p>
+    <a class="teal lighten-4" href="{% url 'account_login' %}">Login</a> to follow thread
 </div>
 {% endif %}
 
@@ -67,7 +67,7 @@
                         <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
                     </form>
                     {% else %}
-                    <p>Log in to leave a comment</p>
+                    <p><a class="teal lighten-4" href="{% url 'account_login' %}">Login</a> to leave a comment</p>
                     {% endif %}
                 </div>
                 <h4 class="comment-heading"> Comments: </h4>
