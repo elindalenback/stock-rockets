@@ -1,4 +1,6 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect, HttpResponseRedirect
+from django.shortcuts import (
+    render, get_object_or_404, reverse, redirect, HttpResponseRedirect
+)
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -6,8 +8,11 @@ from django.contrib import messages
 from .models import Thread, TOPICS, Comment
 from .forms import CommentForm, ThreadForm
 
-# This function requires the user to be logged in. It retrieves a list of threads followed by the current user.
-# It renders a template displaying the profile page with the list of followed threads.
+
+# This function requires the user to be logged in.
+# It retrieves a list of threads followed by the current user.
+# It renders a template displaying the profile page,
+# and the list of followed threads.
 @login_required
 def follow_list(request):
     new = Thread.objects.filter(follow=request.user)
@@ -17,9 +22,11 @@ def follow_list(request):
         {"new": new},
     )
 
-# This function requires the user to be logged in. It allows users to add or remove threads from their followed list.
-# It redirects the user back to the previous page after the action is completed.
-@login_required 
+
+# This function requires the user to be logged in.
+# It allows users to add or remove threads from their followed list.
+# It redirects the user back to previous page after the action is completed.
+@login_required
 def follow_add(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     if thread.follow.filter(id=request.user.pk).exists():
@@ -30,7 +37,9 @@ def follow_add(request, thread_id):
         messages.add_message(request, messages.SUCCESS, 'Followed thread!')
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
-# This class-based view displays a list of threads based on the selected topic or all threads if no topic is selected.
+
+# This class-based view displays a list of threads based on the selected topic,
+# or all threads if no topic is selected.
 class ThreadList(generic.ListView):
     template_name = "forum/index.html"
 
@@ -48,7 +57,9 @@ class ThreadList(generic.ListView):
         context['thread_form'] = ThreadForm()
         return context
 
-# This function requires the user to be logged in. It allows users to create a new thread.
+
+# This function requires the user to be logged in.
+# It allows users to create a new thread.
 # It renders the index page with a form to create a new thread.
 @login_required
 def create_thread(request):
@@ -58,10 +69,13 @@ def create_thread(request):
             thread = thread_form.save(commit=False)
             thread.author = request.user
             thread.save()
-            messages.add_message(request, messages.SUCCESS, 'YAY! You posted a new thread!')
+            messages.add_message(request, messages.SUCCESS,
+                                 'YAY! You posted a new thread!')
             return redirect('thread_detail', slug=thread.slug)
         else:
-            messages.info(request, "There is some error with the details you provided. Please retry." )
+            messages.info(request,
+                          "There is some error with the details you provided. "
+                          "Please retry.")
 
     else:  # For GET requests or invalid POST data
         thread_form = ThreadForm()
@@ -75,6 +89,7 @@ def create_thread(request):
             'thread_list': Thread.objects.all()
         },
     )
+
 
 # This function displays details of a specific thread, including its comments.
 # It also allows users to add comments to the thread.
@@ -91,10 +106,12 @@ def thread_detail(request, slug):
             comment.author = request.user
             comment.thread = thread
             comment.save()
-            messages.success(request, f"Comment '{comment.body}' created successfully!")
+            messages.success(request,
+                             f"Comment '{comment.body}' created successfully!")
             return redirect('thread_detail', slug=comment.thread.slug)
         else:
-            messages.error(request, "Failed to create comment. Please try again!")
+            messages.error(request,
+                           "Failed to create comment. Please try again!")
 
     comment_form = CommentForm()
 
@@ -109,6 +126,7 @@ def thread_detail(request, slug):
         },
     )
 
+
 # This function allows users to edit their comments on a thread.
 def comment_edit(request, slug, comment_id):
     if request.method == "POST":
@@ -121,11 +139,14 @@ def comment_edit(request, slug, comment_id):
             comment = comment_form.save(commit=False)
             comment.thread = thread
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment updated!')
+            messages.add_message(request, messages.SUCCESS,
+                                 'Comment updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(request, messages.ERROR,
+                                 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('thread_detail', args=[slug]))
+
 
 # This function allows users to delete their comments on a thread.
 def comment_delete(request, slug, comment_id):
@@ -137,6 +158,7 @@ def comment_delete(request, slug, comment_id):
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(request, messages.ERROR,
+                             'You can only delete your own comments!')
 
     return redirect('thread_detail', slug=thread.slug)

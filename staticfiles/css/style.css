@@ -1,9 +1,6 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-/* font-family: "Montserrat", sans-serif; */
-/* font-family: "Open Sans", sans-serif; */
-
 /*--------------------------------------------------- General */
 .heading {
     font-family: "Montserrat", sans-serif;
@@ -50,7 +47,7 @@ main {
     right: 0;
     bottom: 0;
     z-index: -1;
-    object-fit: custom; /* Ensure the video covers the entire viewport */
+    object-fit: cover; /* Ensure the video covers the entire viewport */
     width: 100%; /* Set the width to cover the entire viewport */
     height: 100%; /* Set the height to cover the entire viewport */
 }
@@ -108,8 +105,6 @@ nav ul li.active {
     padding: 0 5px;
     margin: 0;
 }
-
-
 
 /* Override Materialize CSS to make select element visible */
 #thread-form select {
@@ -183,15 +178,15 @@ a {
 }
 
 /*----------------------------------------------------- Footer */
-i {
-    font-size: 3rem;
-    padding: 1.2rem;
+.page-footer ul li a {
+    font-size: 16px;
 }
 
 .link-footer {
     color: white;
 }
 
+/* Media query targeting screen sizes up to 840 pixels */
 @media (max-width: 840px) {
     /*------------------------------------------------- Topic Collumn & Thread Collumn */
     .topic-buttons, .topics button {
@@ -200,29 +195,32 @@ i {
         text-align: center;
         padding: 0;
     }
+
     .header-content h1 {
         font-size: 40px;
     }
 }
 
-
+/* Media query targeting screen sizes up to 600 pixels */
 @media (max-width: 600px) {
     /*------------------------------------------------- Topic Collumn & Thread Collumn */
-    
     .topic-buttons, .topics button  {
         font-size: 12px;
         width: 150px;
         text-align: center;
         padding: 0;
     }
+
     .topic-collumn {
         height: 400px;
     }
+
     .header-content h1 {
         font-size: 30px;
     }
 }
 
+/* Media query targeting screen sizes up to 400 pixels */
 @media (max-width: 400px) {
     /*------------------------------------------------- Topic Collumn & Thread Collumn */
     .topic-buttons, .topics button {
@@ -233,7 +231,7 @@ i {
     }
 }
 
-/* Screen size between tablet and larger laptop */
+/* Media query targeting screen sizes up to 280 pixels */
 @media (max-width: 280px) {
     /*------------------------------------------------- Topic Collumn & Thread Collumn */
     .topic-buttons {
@@ -262,4 +260,4 @@ i {
     .header-content h1 {
         font-size: 20px;
     }
-  }
+}

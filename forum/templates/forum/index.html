@@ -80,10 +80,8 @@
                     <li class="collection-item">
                         {% if thread.slug %}
                         <a href="{% url 'thread_detail' thread.slug %}" class="thread-link">
-                            <h5 id="search-title" class="heading">{{thread.title}}</h5>
-                            <p class="card-text">
-                                {{ thread.thread_text | safe }}
-                            </p>
+                            <h5 class="heading">{{thread.title}}</h5>
+                            <div class="card-text">{{ thread.thread_text |safe }}</div>
                         </a>
                         {% endif %}
                     </li>

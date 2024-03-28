@@ -3,15 +3,8 @@ const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 
-const deleteModal = document.getElementById("deleteModal");
 const deleteButtons = document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
-
-console.log('editButtons: ', editButtons)
-console.log('commentText: ', commentText)
-console.log('commentForm: ', commentForm)
-console.log('submitButton: ', submitButton)
-console.log('slug: ', thread_slug)
 
 /**
 * Initializes edit functionality for the provided edit buttons.
@@ -26,16 +19,10 @@ console.log('slug: ', thread_slug)
 for (let button of editButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
-    console.log('COMMENT ID: ', commentId)
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
-    // let slug = e.target.getAttribute("data-slug"); // Retrieve slug from data attribute
-    let slug = thread_slug
     commentText.value = commentContent;
-    console.log('SLUG: ', slug)
-    console.log('COMMENT TEXT: ', commentText.value)
     submitButton.innerText = "Update";
-    // commentForm.setAttribute("action", `${slug}/edit_comment/${commentId}/`); // Use slug in action attribute
-    commentForm.setAttribute("action", `${thread_slug}/edit_comment/${commentId}`);
+    commentForm.setAttribute("action", `${thread_slug}/edit_comment/${commentId}`); // Use slug in action attribute
     // Display toast message when edit button is clicked
     M.toast({ html: 'You can now edit your comment' });
   });
@@ -55,6 +42,5 @@ for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.target.getAttribute("comment_id");
     deleteConfirm.action = `${thread_slug}/delete_comment/${commentId}`;
-    // deleteModal.show();
   });
 }

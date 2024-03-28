@@ -12,8 +12,8 @@ TOPICS = (
     (6, "Education"),
 )
 
-# Create your models here.
 
+# Create your models here.
 # The model to create a new discussion thread
 class Thread(models.Model):
     thread_id = models.AutoField(primary_key=True)
@@ -34,7 +34,8 @@ class Thread(models.Model):
 
     def save(self):
         self.slug = self.title.lower().replace(" ", "-")
-        self.slug = re.sub(r'[^a-z0-9-]', '', self.slug)  # Remove special characters
+        # Remove special characters
+        self.slug = re.sub(r'[^a-z0-9-]', '', self.slug)
         super().save()
 
     def __str__(self):

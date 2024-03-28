@@ -39,9 +39,7 @@
         <div id="thread-text-card" class="col card mb-4  mt-3 left  top">
             <div class="card-body">
                 <h3 class="post-title">{{ thread.title }}</h3>
-                <p class="card-text">
-                    {{ thread.thread_text | safe }}
-                </p>
+                <div class="card-text">{{ thread.thread_text | safe }}</div>
             </div>
         </div>
     </div>
@@ -84,9 +82,7 @@
                                 </div>
                                 <p>{{ comment.created_on }}</p>
                             </div>
-                            <p id="comment{{ comment.comment_id }}" class="card-text">
-                                {{ comment.body | safe }}
-                            </p>
+                            <p id="comment{{ comment.comment_id }}" class="card-text">{{ comment.body | safe }}</p>
                             {% if request.user == comment.author %}
                             <button data-target="deleteModal" class="btn btn-delete modal-trigger" comment_id="{{ comment.comment_id }}">Delete</button>
                             <button class="btn btn-edit" comment_id="{{ comment.comment_id }}" data-slug="{{ thread.slug }}">Edit</button>
@@ -104,10 +100,9 @@
 <div id="deleteModal" class="modal">
     <div class="modal-content">
       <h4>Are you sure you want to delete your comment?</h4>
-      <p></p>
     </div>
     <div class="modal-footer">
-        <form id="deleteConfirm" method="DELETE">
+        <form id="deleteConfirm">
             <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-danger">Delete</button>
         </form>
@@ -119,7 +114,7 @@
 
 {% block extras %}
 <script>
-    let thread_slug = `{{ thread.slug}}`
+    let thread_slug = `{{ thread.slug }}`
 </script>
 <script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}
